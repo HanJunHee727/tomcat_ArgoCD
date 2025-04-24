@@ -26,11 +26,16 @@ metadata:
 data:
   hello.html: |" > manifests/hello-config.yaml
           sed 's/^/    /' application/hello.html >> manifests/hello-config.yaml
-
+          
       - name: Commit & Push
         run: |
           git config user.name "jhhan-github-actions"
           git config user.email "jhhan-actions@github.com"
           git add manifests/hello-config.yaml
-          git commit -m "Auto-update ConfigMap from hello.html"
-          git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-update ConfigMap from hello.html"
+            git push
+          fi
+
