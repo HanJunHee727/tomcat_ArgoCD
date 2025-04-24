@@ -3,7 +3,7 @@ name: Deploy ConfigMap to Git
 on:
   push:
     paths:
-      - 'application/hello.html'  # 이 파일이 변경되면 실행
+      - 'application/hello.html'
     branches:
       - main
 
@@ -17,25 +17,26 @@ jobs:
 
       - name: Generate ConfigMap from HTML
         run: |
-          mkdir -p manifests
-          echo "apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: hello-html
-  namespace: jhhan
-data:
-  hello.html: |" > manifests/hello-config.yaml
-          sed 's/^/    /' application/hello.html >> manifests/hello-config.yaml
-          
+          mkdir -p manifests/tomcat
+          {
+            echo "apiVersion: v1"
+            echo "kind: ConfigMap"
+            echo "metadata:"
+            echo "  name: hello-html"
+            echo "  namespace: jhhan"
+            echo "data:"
+            echo "  hello.html: |"
+            sed 's/^/    /' application/hello.html
+          } > manifests/tomcat/hello-configmap.yaml
+
       - name: Commit & Push
         run: |
           git config user.name "jhhan-github-actions"
           git config user.email "jhhan-actions@github.com"
-          git add manifests/hello-config.yaml
+          git add manifests/tomcat/hello-configmap.yaml
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
             git commit -m "Auto-update ConfigMap from hello.html"
             git push
           fi
-
