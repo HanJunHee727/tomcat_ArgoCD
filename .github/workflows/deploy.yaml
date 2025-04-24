@@ -1,5 +1,3 @@
-# .github/workflows/deploy.yaml
-
 name: Deploy ConfigMap to Git
 
 on:
@@ -31,8 +29,8 @@ data:
 
       - name: Commit & Push
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+          git config user.name "jhhan-github-actions"
+          git config user.email "jhhan-actions@github.com"
           git add manifests/hello-config.yaml
           git commit -m "Auto-update ConfigMap from hello.html"
           git push
