@@ -4,7 +4,7 @@ metadata:
   name: index-html
   namespace: jhhan
 data:
-  hello.html: |
+  index.html: |
     <!DOCTYPE html>
     <html>
     <head><title>Hello</title></head>
