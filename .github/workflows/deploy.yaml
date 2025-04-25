@@ -33,7 +33,7 @@ jobs:
         run: |
           git config user.name "jhhan-github-actions"
           git config user.email "jhhan-actions@github.com"
-          git add manifests/tomcat/hello-configmap.yaml
+          git add manifests/tomcat/index-configmap.yaml
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
