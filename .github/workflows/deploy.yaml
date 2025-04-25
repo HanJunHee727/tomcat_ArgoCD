@@ -25,7 +25,7 @@ jobs:
             echo "  name: index-html"
             echo "  namespace: jhhan"
             echo "data:"
-            echo "  hello.html: |"
+            echo "  index.html: |"
             sed 's/^/    /' application/index.html
           } > manifests/tomcat/index-configmap.yaml
 
