@@ -20,12 +20,12 @@ spec:
         - containerPort: 8080
         volumeMounts:
         - name: html-volume
-          mountPath: /usr/local/tomcat/webapps/ROOT/hello.html
-          subPath: hello.html
+          mountPath: /usr/local/tomcat/webapps/ROOT/index.html
+          subPath: index.html
       volumes:
       - name: html-volume
         configMap:
-          name: hello-html
+          name: index-html
 
 
 
