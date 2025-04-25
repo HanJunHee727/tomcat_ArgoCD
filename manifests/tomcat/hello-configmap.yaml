@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: hello-html
+  name: index-html
   namespace: jhhan
 data:
   hello.html: |
