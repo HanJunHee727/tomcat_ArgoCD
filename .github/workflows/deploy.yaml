@@ -3,7 +3,7 @@ name: Deploy ConfigMap to Git
 on:
   push:
     paths:
-      - 'application/hello.html'
+      - 'application/index.html'
     branches:
       - main
 
@@ -22,12 +22,12 @@ jobs:
             echo "apiVersion: v1"
             echo "kind: ConfigMap"
             echo "metadata:"
-            echo "  name: hello-html"
+            echo "  name: index-html"
             echo "  namespace: jhhan"
             echo "data:"
             echo "  hello.html: |"
-            sed 's/^/    /' application/hello.html
-          } > manifests/tomcat/hello-configmap.yaml
+            sed 's/^/    /' application/index.html
+          } > manifests/tomcat/index-configmap.yaml
 
       - name: Commit and Push if Changed
         run: |
@@ -37,6 +37,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Auto-update ConfigMap from hello.html"
+            git commit -m "Auto-update ConfigMap from index.html"
             git push
           fi
