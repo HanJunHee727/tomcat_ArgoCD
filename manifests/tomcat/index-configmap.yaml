@@ -6,7 +6,7 @@ metadata:
 data:
   index.html: |
     <!DOCTYPE html>
-    <html>
-    <head><title>Hello</title></head>
-    <body><h1>Hello there!</h1></body>
-    </html>
+        <html>
+        <head><title>Hello</title></head>
+        <body><h1>Hello test!</h1></body>
+        </html>
